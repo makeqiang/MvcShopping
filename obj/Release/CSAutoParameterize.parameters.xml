@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="MvcShopping-Web.config Connection String" description="MvcShopping 由应用程序在 web.config 中用来访问数据库的连接字符串。" defaultValue="server=10.154.20.79;database=MvcShopping;uid=sa;pwd=ma123456.;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Administrator\\documents\\visual\ studio\ 2017\\Projects\\MvcShopping\\MvcShopping\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MvcShopping']/@connectionString" />
+  </parameter>
+  <parameter name="MvcShopping.Models.MvcShoppingContext-Web.config Connection String" description="MvcShopping.Models.MvcShoppingContext 由应用程序在 web.config 中用来访问数据库的连接字符串。" defaultValue="MvcShopping.Models.MvcShoppingContext_ConnectionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Administrator\\documents\\visual\ studio\ 2017\\Projects\\MvcShopping\\MvcShopping\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MvcShopping.Models.MvcShoppingContext']/@connectionString" />
+  </parameter>
+</parameters>

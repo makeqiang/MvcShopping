@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="MvcShopping" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Administrator\\documents\\visual\ studio\ 2017\\Projects\\MvcShopping\\MvcShopping\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Administrator\\documents\\visual\ studio\ 2017\\Projects\\MvcShopping\\MvcShopping\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="MvcShopping/App_Data" tags="Hidden">
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Administrator\\documents\\visual\ studio\ 2017\\Projects\\MvcShopping\\MvcShopping\\obj\\Release\\Package\\PackageTmp\\App_Data$" />
+  </parameter>
+  <parameter name="MvcShopping-Web.config Connection String" description="" value="server=10.154.20.79;database=MvcShopping;uid=sa;pwd=ma123456.;" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Administrator\\documents\\visual\ studio\ 2017\\Projects\\MvcShopping\\MvcShopping\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MvcShopping']/@connectionString" />
+  </parameter>
+  <parameter name="MvcShopping.Models.MvcShoppingContext-Web.config Connection String" description="" value="Server=10.154.20.79;Database=MvcShopping;uid=sa;pwd=ma123456." tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Administrator\\documents\\visual\ studio\ 2017\\Projects\\MvcShopping\\MvcShopping\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MvcShopping.Models.MvcShoppingContext']/@connectionString" />
+  </parameter>
+</parameters>

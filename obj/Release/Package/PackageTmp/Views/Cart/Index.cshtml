@@ -1,0 +1,75 @@
+﻿@model List<MvcShopping.Models.Cart>
+
+@{
+   var ajaxOption = new AjaxOptions()
+    {
+        OnSuccess = "RemoveCartSuccess",
+        OnFailure = "RemoveCartFailure",
+        Confirm="您确定从购物车删除这个商品吗?",
+        HttpMethod = "post"
+    };
+}
+@section scripts{
+
+   @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function RemoveCartSuccess() {
+            alert("移除成功");
+            location.reload();
+        }
+        function RemoveCartFailure(xhr) {
+            alert("移除失败(HTPP状态码:" + xhr.status + ")");
+        }
+    </script>
+    }
+<style>
+    .form-control{
+        width:70px;
+        height:27px;
+    }
+</style>
+<h2>购物车列表</h2>
+
+@using (Html.BeginForm("UpdateAmount", "Cart"))
+{
+    <table class="table table-hover">
+        <tr>
+            <th>产品名称</th>
+            <th>单价</th>
+            <th>数量</th>
+            <th>小计</th>
+            <th>操作</th>
+        </tr>
+        @{ int subTotal = 0;}
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            //计算购买的价格
+            subTotal += Model[i].Product.Price * Model[i].Amount;
+
+            //选择商品的数量1-10
+            var ddlAmountList = new SelectList(Enumerable.Range(1, 10), Model[i].Amount);
+
+            @Html.HiddenFor(modelitem => Model[i].Product.Id)
+
+            <tr>
+                <td>@Html.DisplayFor(modelitem => Model[i].Product.Name)</td>
+                <td>NT$ @(Model[i].Product.Price)</td>
+                <td>@Html.DropDownListFor(modelitem=>Model[i].Amount,ddlAmountList,new { @class= "form-control" })</td>
+                <td>NT$ @(Model[i].Product.Price*Model[i].Amount)</td>
+                <td>@Ajax.ActionLink("删除","Remove",new {ProductId=Model[i].Product.Id },ajaxOption)</td>
+            </tr>
+        }
+        <tr>
+            <th></th>
+            <th></th>
+            <th>总价</th>
+            <th id="subtotal">NT$ @subTotal</th>
+            <th></th>
+        </tr>
+    </table>
+    <p>
+        <input class="btn btn-default btn-sm" type="submit" value="更新数量" />
+        <input class="btn btn-default btn-sm" type="button" value="完成订单" onclick="location.href='@Url.Action("Complete","Order")';" />
+    </p>
+}
+
