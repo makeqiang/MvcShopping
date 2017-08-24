@@ -174,7 +174,6 @@ namespace MvcShopping.Controllers
         }
 
         //远程验证邮箱是否注册
-        [OutputCache]
         public JsonResult CheckDup(string Email)
         {
             var member = db.Members.Where(p=>p.Email == Email).FirstOrDefault();
