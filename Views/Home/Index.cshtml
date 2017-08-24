@@ -1,0 +1,52 @@
+﻿@model List<MvcShopping.Models.ProductCategory>
+@using MvcShopping.Helpers;
+
+
+<div id="Login" class="alert alert-success hide" role="alert">
+    <a class="text-success" target="_blank" href="@TempData["EmailUrl"]">注册成功,赶快去验证邮箱吧!</a>
+    <button type="button" class="close btn btn-sm" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+</div>
+
+<h2>@Html.DisplayNameFor(model => model[0])</h2>
+<style>
+    .alert-success{
+        height:40px;
+        line-height:10px;
+    }
+    .close{
+        margin-top:-5px;
+    }
+</style>
+<div class="container text-center">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3">
+                @Html.Img("ProductList", item.CategoryImg, "", new { id = item.Id }, new { }, new { Style = "width:200px;height:100px" })
+            </div>
+        }
+    </div>
+
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3">
+                @Html.ActionLink(item.Name, "ProductList", new { id = item.Id })
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    @if (TempData["EmailUrl"] !=null)
+    {
+        <script>
+            $(function () {
+                $("#Login").addClass("show");
+            })
+        </script>
+    }
+}
+

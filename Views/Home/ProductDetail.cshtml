@@ -1,0 +1,40 @@
+﻿@model MvcShopping.Models.Product
+
+@{
+    var ajaxOption = new AjaxOptions()
+    {
+        OnSuccess = "AddToCartSuccess",
+        OnFailure = "AddToCartFailure",
+        HttpMethod="post"
+    };
+}
+@section scripts{
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        function AddToCartSuccess() {
+            alert("添加成功")
+        }
+        function AddToCartFailure(xhr) {
+            alert("添加失败(HTTP状态码:" + xhr.status + ")");
+        }
+    </script>
+}
+    <h4>@Html.DisplayName(Model.Name)</h4>
+<div class="container">
+    <table class="table table-hover">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th>@Html.DisplayNameFor(model => model.Price)</th>
+            <th>@Html.DisplayNameFor(model => model.PublishOn)</th>
+            <th>购买</th>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.Description)</td>
+            <td>@Html.DisplayFor(model => model.Price)</td>
+            <td>@Html.DisplayFor(model => model.PublishOn)</td>
+            <td>@Ajax.ActionLink("添加到购物车", "AddToCart", "Cart",new {ProductId=Model.Id}, ajaxOption)</td>
+        </tr>
+    </table>
+</div>
